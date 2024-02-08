@@ -9,7 +9,7 @@ on:
 jobs:
   build-analyze-scan:
     name: Build
-    runs-on: [self-hosted]
+    runs-on: [Linux]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,10 +21,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      - name: npm install dependancy
-        run: npm install 
-      - name: Trivy file scan
-        run: trivy fs . > trivyfs.txt
+     
 
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
